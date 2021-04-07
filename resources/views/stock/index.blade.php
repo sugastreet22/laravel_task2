@@ -35,50 +35,7 @@
                       </tr>
                     </tbody>
                     @endforeach
-                    <!-- <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>コアラのマーチ</td>
-                        <td>0個</td>
-                        <td>130円</td>
-                        <td>2021-04-04 12:12:12</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>ポッキー</td>
-                        <td>0個</td>
-                        <td>150円</td>
-                        <td>2021-04-04 12:12:12</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>じゃがりこ</td>
-                        <td>0個</td>
-                        <td>98円</td>
-                        <td>2021-04-04 12:12:12</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>おっとっと</td>
-                        <td>0個</td>
-                        <td>100円</td>
-                        <td>2021-04-04 12:12:12</td>
-
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>かっぱえびせん</td>
-                        <td>0個</td>
-                        <td>120円</td>
-                        <td>2021-04-04 12:12:12</td>
-
-                      </tr>
-                    </tbody> -->
-                  </table>
-                    <!-- <a href="{{ route('stock.create') }}">新規登録</a> -->
+                    <a href="{{ route('stock.create') }}">在庫登録</a>
                 </div>
             </div>
         </div>

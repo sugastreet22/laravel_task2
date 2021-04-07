@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function(){
     Route::get('index', 'StockController@index')->name('stock.index');
     Route::get('create', 'StockController@create')->name('stock.create');
+    Route::post('register', 'StockController@register')->name('stock.register');
+
 
 });
 
