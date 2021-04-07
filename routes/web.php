@@ -20,6 +20,7 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function(){
     Route::get('create', 'StockController@create')->name('stock.create');
     Route::post('register', 'StockController@register')->name('stock.register');
 
+
 });
 
 // Route::resource('stocks', 'StockController')->only([

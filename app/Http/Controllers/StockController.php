@@ -16,7 +16,6 @@ class StockController extends Controller
     public function index()
     {
         $data = [
-
               'stock'         => Stock::getStocks()   // Stock::（モデルの）getStocks()（モデルで作った関数）を使用
         ];
         // Log::debug(print_r($data, true)); //ターミナルでデバッグを表示
