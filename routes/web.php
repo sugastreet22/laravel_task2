@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function(){
+    Route::get('index', 'StockController@index')->name('stock.index');
+    Route::get('create', 'StockController@create')->name('stock.create');
+    Route::post('register', 'StockController@register')->name('stock.register');
+
+
+});
+
+// Route::resource('stocks', 'StockController')->only([
+//     'index', 'show'
+// ]);
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
