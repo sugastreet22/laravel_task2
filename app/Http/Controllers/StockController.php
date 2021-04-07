@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;  //コントローラーがどこの階層にあるか
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; //入力された値をとる
 use App\Stock;  //モデルを使う宣言これを書かないと干渉できない
 use Log;  //デバッグを見れるようにするLOG_CHANNEL=daily1日ごと見れる
+
 class StockController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class StockController extends Controller
     public function index()
     {
         $data = [
-            //  'stock'      => 'ああああああああ'
+
               'stock'         => Stock::getStocks()   // Stock::（モデルの）getStocks()（モデルで作った関数）を使用
         ];
         // Log::debug(print_r($data, true)); //ターミナルでデバッグを表示
@@ -31,7 +32,23 @@ class StockController extends Controller
      */
     public function create()
     {
-        return view('stock.create');
+        return view('stock.create'); //ビューにかえしますget
+    }
+
+    public function register(Request $request)
+    {
+        $data = $request->all();
+        Log::debug(print_r($data, true));
+
+        $create = [
+            'name'  => $request->name,
+			'quantity'     => '0' ,
+			'price'     => $request->price,
+        ];
+
+        Stock::createStock($create);
+
+        return redirect("/stock/index"); //保存されたらホームに戻す
     }
 
     /**
