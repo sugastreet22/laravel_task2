@@ -13,15 +13,13 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //全部データを取ってくるので引数必要なし
     {
         $data = [
-              'stock'         => Stock::getStocks()   // Stock::（モデルの）getStocks()（モデルで作った関数）を使用
+            'stock' => stock::getStocks()
         ];
-        // Log::debug(print_r($data, true)); //ターミナルでデバッグを表示
-         return view('stock.index', $data);  // stock/indexに、$dataをもたす。すべての在庫情報
-        // return view('stock.index');
 
+        return view('stock.index', $data);
     }
 
     /**
@@ -31,23 +29,19 @@ class StockController extends Controller
      */
     public function create()
     {
-        return view('stock.create'); //ビューにかえしますget
+        return view('stock.create');
     }
 
-    public function register(Request $request)
+    public function register(Request $request) //入力されたデータは$requestは配列が入っている保存するから
     {
-        $data = $request->all();
-        Log::debug(print_r($data, true));
-
         $create = [
-            'name'  => $request->name,
-			'quantity'     => '0' ,
-			'price'     => $request->price,
+            'name' => $request->name,
+            'quantity' => 0,
+            'price' => $request->price,
         ];
-
-        Stock::createStock($create);
-
-        return redirect("/stock/index"); //保存されたらホームに戻す
+        // Log::debug(print_r($create, true));
+        stock::registerStocks($create);
+        return redirect('stock/index');
     }
 
     /**
@@ -67,9 +61,13 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //viewから入ってくる引数
     {
-        //
+        $data = [
+            'stock' => stock::showStocks($id)
+        ];
+
+        return view('stock.show', $data);
     }
 
     /**
