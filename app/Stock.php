@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Log;
+
 class Stock extends Model
 {
   protected $fillable = ['id','name','quantity','price','created_at'];
@@ -15,6 +17,7 @@ class Stock extends Model
 
   public static function registerStocks($create)
   {
+    // Log::debug(print_r($create, true));
     return self::create($create);
   }
 

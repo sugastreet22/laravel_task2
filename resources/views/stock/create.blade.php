@@ -33,7 +33,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="name">商品名</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="商品名"  >
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="商品名" >
                                     </div>
                                 </div>
                                 <div class="form-row">

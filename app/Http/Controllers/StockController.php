@@ -34,13 +34,17 @@ class StockController extends Controller
 
     public function register(Request $request) //入力されたデータは$requestは配列が入っている保存するから
     {
+
+        // $test = $request->all(); //ここでうまくとれていないと大体フォームのせい
+        // Log::debug(print_r($test, true)); //registerでformでpostしたものが受け取れとれてるか
         $create = [
             'name' => $request->name,
             'quantity' => 0,
             'price' => $request->price,
         ];
-        // Log::debug(print_r($create, true));
+        // Log::debug(print_r($create, true)); //modelに送る前のデバッグ
         stock::registerStocks($create);
+        Log::info("デバッグです");
         return redirect('stock/index');
     }
 
