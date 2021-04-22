@@ -16,7 +16,7 @@ class StockController extends Controller
     public function index() //全部データを取ってくるので引数必要なし
     {
         $data = [
-            'stock' => stock::getStocks()
+            'stock' => Stock::getStocks()
         ];
 
         return view('stock.index', $data);
@@ -44,7 +44,7 @@ class StockController extends Controller
         ];
         // Log::debug(print_r($create, true)); //modelに送る前のデバッグ
         stock::registerStocks($create);
-        Log::info("デバッグです");
+        // Log::info("デバッグです");
         return redirect('stock/index');
     }
 
