@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+          <a href="/stock/index">在庫画面へ</a>
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">ようこそ！</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +15,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    ログインしました。
                 </div>
             </div>
         </div>

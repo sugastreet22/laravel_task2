@@ -5,7 +5,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
+          <a href="/order/create">発注登録</a>
+          <a href="/stock/index">在庫画面へ</a>
             <div class="card">
                 <div class="card-header"></div>
 
