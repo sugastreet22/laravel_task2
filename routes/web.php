@@ -26,6 +26,7 @@ Route::group(['prefix' => 'stock', 'middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'order', 'middleware' => 'auth'], function(){
     Route::get('index', 'OrderController@index')->name('order.index');
+    Route::post('changeStatus', 'OrderController@changeStatus')->name('order.changeStatus');
     Route::get('create', 'OrderController@create')->name('order.create');
     Route::post('register', 'OrderController@register')->name('order.register');
 

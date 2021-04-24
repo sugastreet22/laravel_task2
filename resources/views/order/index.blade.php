@@ -35,7 +35,25 @@
                               <td>{{ $orders['name'] }}</td>
                               <td>{{ $orders['quantity'] }}</td>
                               <td>{{ $orders['total_price'] }}</td>
-                              <td>{{ $orders['order_status'] }}</td>
+                              <td>
+                                {{ $orders['order_status'] }}
+                                <form method="POST" action="changeStatus" enctype="multipart/form-data">
+                                  @csrf
+                                  @if($orders['order_status'] === '発注確認')
+                                    <input type="hidden" name="order_status" value="発注状態">
+                                    <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
+                                    <button class="btn btn-primary">発注変更</button>
+                                  @elseif($orders['order_status'] === '発注状態')
+                                    <input type="hidden" name="order_status" value="発注済み">
+                                    <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
+                                    <button class="btn btn-primary">発注変更</button>
+                                  @elseif($orders['order_status'] === '発注済み')
+                                    <input type="hidden" name="order_status" value="発注受取済み">
+                                    <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
+                                    <button class="btn btn-primary">発注変更</button>
+                                  @endif
+                                </form>
+                              </td>
                               <td>{{ $orders['created_at'] }}</td>
                             </tr>
                             @endforeach

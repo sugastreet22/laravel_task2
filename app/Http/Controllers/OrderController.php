@@ -22,6 +22,18 @@ class OrderController extends Controller
         return view('order.index',$data);
     }
 
+    public function changeStatus(Request $request)
+    {
+         $test = $request->all(); //$requestに値が入っているか
+          Log::debug(print_r($test, true));
+        $change = [
+            'order_status' => $request->order_status,
+        ];
+
+        Order::changeStatus($change, $request->id);
+        return redirect('order/index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +54,7 @@ class OrderController extends Controller
         $create = [
             'name' => $request->name,
             'quantity' => $request->quantity,
-            'order_status' => '0',
+            'order_status' => '発注確認',
         ];
 
         //  Log::debug(print_r($create, true)); //modelに送る前配列に値が入っているか
