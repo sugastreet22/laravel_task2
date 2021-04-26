@@ -39,7 +39,7 @@
                                 {{ $orders['order_status'] }}
                                 <form method="POST" action="changeStatus" enctype="multipart/form-data">
                                   @csrf
-                                  @if($orders['order_status'] === '発注確認')
+                                  @if($orders['order_status'] === '発注確認' )
                                     <input type="hidden" name="order_status" value="発注状態">
                                     <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
                                     <button class="btn btn-primary">発注変更</button>

@@ -24,8 +24,8 @@ class OrderController extends Controller
 
     public function changeStatus(Request $request)
     {
-         $test = $request->all(); //$requestに値が入っているか
-          Log::debug(print_r($test, true));
+        //  $test = $request->all(); //$requestに値が入っているか
+        //   Log::debug(print_r($test, true));
         $change = [
             'order_status' => $request->order_status,
         ];
