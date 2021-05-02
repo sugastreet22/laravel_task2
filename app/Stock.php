@@ -17,8 +17,8 @@ class Stock extends Model
 
   public static function registerStocks($create)
   {
-    // Log::debug(print_r($create, true));
-    return self::create($create); //保存なのでreturnなくてもいい
+      // Log::debug(print_r($create, true)); //モデルに$createが渡されているか
+     self::create($create); //保存なのでreturnなくていい
   }
 
   public static function showStocks($show)
@@ -28,16 +28,15 @@ class Stock extends Model
 
   public static function recordOrders($orderName) //保存された名前
   {
-    // Log::debug(print_r($orderName, true)); //渡すことが出来た
-    return self::firstWhere('name', $orderName); //第一引数はカラム 名前を検索しています
-    // Log::debug(print_r($aaa, true)); //firstWhereのデバッグのため
+    return self::firstWhere('name', $orderName); //第一引数はカラム 名前を検索しています orderと同じ名前でヒットしたstockのレコードをリターンする
   }
 
-  public static function priceOrders($priceName)
+  public static function sumQuantities($update, $id)
   {
-    // Log::debug(print_r($priceName, true));
-
-
-
+    //  Log::debug(print_r($update, true));
+    // Log::debug($id); //stockのidが取れる
+     self::where('id', $id)->update($update);
   }
+
+
 }

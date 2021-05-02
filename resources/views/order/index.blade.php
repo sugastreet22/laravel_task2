@@ -39,17 +39,19 @@
                                 {{ $orders['order_status'] }}
                                 <form method="POST" action="changeStatus" enctype="multipart/form-data">
                                   @csrf
-                                  @if($orders['order_status'] === '発注確認' )
+                                  @if($orders['order_status'] === '発注確認' && Auth::User()->role === 1)
                                     <input type="hidden" name="order_status" value="発注状態">
                                     <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
                                     <button class="btn btn-primary">発注変更</button>
-                                  @elseif($orders['order_status'] === '発注状態')
+                                  @elseif($orders['order_status'] === '発注状態' && Auth::User()->role === 3)
                                     <input type="hidden" name="order_status" value="発注済み">
                                     <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
                                     <button class="btn btn-primary">発注変更</button>
-                                  @elseif($orders['order_status'] === '発注済み')
+                                  @elseif($orders['order_status'] === '発注済み' && Auth::User()->role === 1)
                                     <input type="hidden" name="order_status" value="発注受取済み">
                                     <input type="hidden" id="id" name="id" value="{{ $orders['id'] }}">
+                                    <input type="hidden" id="name" name="name" value="{{ $orders['name'] }}">
+                                    <input type="hidden" id="quantity" name="quantity" value="{{ $orders['quantity'] }}">
                                     <button class="btn btn-primary">発注変更</button>
                                   @endif
                                 </form>
@@ -59,6 +61,7 @@
                             @endforeach
                           </tbody>
                       </table>
+                      {{ $order->links() }}
                 </div>
             </div>
         </div>
