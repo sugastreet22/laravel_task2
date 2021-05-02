@@ -7,6 +7,11 @@
         <div class="col-md-8">
           <a href="/stock/create">在庫登録</a>
           <a href="/order/index">発注画面へ</a>
+          <!-- ここからcsv -->
+            <form class="form" method="GET" action="download">
+                <button type="submit" class="btn btn-primary">csv出力</button>
+            </form>
+            <!-- ここまで -->
             <div class="card">
                 <div class="card-header"></div>
 

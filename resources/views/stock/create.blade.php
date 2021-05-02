@@ -33,13 +33,13 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="name">商品名</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="商品名" >
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="商品名"  required>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="price">金額</label>
-                                        <input type="text" class="form-control" id="name" name="price" placeholder="金額" >
+                                        <input type="text" class="form-control" id="name" name="price" placeholder="金額" required>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">登録する</button>
