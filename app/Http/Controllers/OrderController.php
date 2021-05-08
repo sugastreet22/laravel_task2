@@ -19,7 +19,7 @@ class OrderController extends Controller
         $data = [
             'order' => Order::getOrders()
         ];
-        return view('order.index',$data);
+        return view('order.index', $data);
     }
 
     public function changeStatus(Request $request)
@@ -31,7 +31,7 @@ class OrderController extends Controller
         ];
             // Log::debug($request->order_status); //発注状況が変更している
         Order::changeStatus($change, $request->id);
-         if ($request->order_status === "発注受取済み") {
+        if ($request->order_status === "発注受取済み") {
             $records = Stock::recordOrders($request->name);
             // Log::debug(print_r($records, true));
             //  Log::debug($records->name);
@@ -43,7 +43,7 @@ class OrderController extends Controller
             // Log::debug(print_r($update, true)); //発注受取済みになると$sumが取れる
             //  Log::debug($sum);
             Stock::sumQuantities($update, $records->id); //なにを更新するか どこを検索するかどこのレコードを更新したいか
-         }
+        }
         return redirect('order/index');
     }
 
@@ -57,7 +57,7 @@ class OrderController extends Controller
         $data = [
             'stock' => Stock::getStocks()
         ];
-        return view('order.create',$data);
+        return view('order.create', $data);
     }
 
     public function register(Request $request) //商品名個数入力して登録するボタン押すとRequestが走る=>$requestが使える
