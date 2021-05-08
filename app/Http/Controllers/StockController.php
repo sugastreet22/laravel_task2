@@ -52,9 +52,9 @@ class StockController extends Controller
         return redirect('stock/index');
     }
 
-     public function download( Request $request )
+    public function download(Request $request)
     {
-        $stocks = Stock::getStocks();
+        $stocks = Stock::csvStocks();
         // Log::debug(print_r($stocks, true));
         $cvsList[] = ["id", '名前', '在庫数', '金額（単価）', '登録日時'];
         foreach ($stocks as $stock) {
@@ -71,14 +71,14 @@ class StockController extends Controller
 
 
 
-        $response = new StreamedResponse (function() use ($request, $cvsList){
+        $response = new StreamedResponse(function () use ($request, $cvsList) {
             $stream = fopen('php://output', 'w');
 
             // 文字化け回避
-            stream_filter_prepend($stream,'convert.iconv.utf-8/cp932//TRANSLIT');
+            stream_filter_prepend($stream, 'convert.iconv.utf-8/cp932//TRANSLIT');
 
             // CSVデータ
-            foreach($cvsList as $key => $value) {
+            foreach ($cvsList as $key => $value) {
                 fputcsv($stream, $value);
             }
             fclose($stream);
