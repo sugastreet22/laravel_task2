@@ -44,6 +44,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                  {{ $stock->links() }} <!-- ページネーション -->
                 </div>
             </div>
         </div>
